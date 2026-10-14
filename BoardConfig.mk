@@ -1,62 +1,98 @@
 #
 # Copyright (C) 2026 The Android Open Source Project
-# BoardConfig.mk for Tecno KM7k (MT6789 / Helio G200 Platform)
+# BoardConfig.mk for Tecno KM7k (MT6789 / Helio G200)
+# Direct Stock Firmware Adaptation
 #
 
 LOCAL_PATH := $(call my-dir)
 
 # Target Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv8-2a-dotprod
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a76
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 
-# Platform & Hardware (MT6789 Base)
+# Force 64-bit Preferences
+IGNORE_PREFER32_ON_DEVICE := true
+TARGET_DYNAMIC_64_32_MEDIASERVER := true
+TARGET_DYNAMIC_64_32_DRMSERVER := true
+ZYGOTE_FORCE_64 := true
+
+# Platform & Hardware
 BOARD_USES_MTK_HARDWARE := true
 TARGET_BOARD_PLATFORM := mt6789
 
-# Kernel / Boot Image Configuration (Header Version 4 / 4K Page Size)
+# Boot Header Version & Kernel Configs (KM7k Stock v4)
 BOARD_BOOT_HEADER_VERSION := 4
-BOARD_PAGE_SIZE := 4096
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
+BOARD_RAMDISK_USE_LZ4 := true
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_BASE := 0x3fff8000
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x26f08000
+BOARD_KERNEL_TAGS_OFFSET := 0x07c88000
+BOARD_DTB_OFFSET := 0x07c88000
+
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
+BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
+BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/dtb
 
-BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION) --pagesize $(BOARD_PAGE_SIZE)
+# Partitions & Sizes (Eksaktong sukat mula sa KM7k Firmware Dump)
+BOARD_FLASH_BLOCK_SIZE := 262144
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 
-# Recovery Configuration
-BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-
-# Dynamic Partitions (Tecno KM7k Super Partition)
 BOARD_SUPER_PARTITION_SIZE := 9126805504
-BOARD_SUPER_PARTITION_GROUPS := main_dynamic_partitions
-BOARD_MAIN_DYNAMIC_PARTITIONS_SIZE := 9122611200
-BOARD_MAIN_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor product
+BOARD_SUPER_PARTITION_GROUPS := mtk_dynamic_partitions
+BOARD_MTK_DYNAMIC_PARTITIONS_PARTITION_LIST := odm_dlkm product system system_ext vendor vendor_dlkm
+BOARD_MTK_DYNAMIC_PARTITIONS_SIZE := 9122611200
+
+BOARD_EROFS_PCLUSTER_SIZE := 262144
+BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_ODM_DLKIMAGE := true
+BOARD_USES_VENDOR_DLKMIMAGE := true
+
+BOARD_ODM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+
+TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # File Systems
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 
-# SELinux Configuration
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy/vendor
-
-# System and Vendor Properties
+# Properties
 TARGET_SYSTEM_PROP += $(LOCAL_PATH)/configs/properties/system.prop
 TARGET_VENDOR_PROP += $(LOCAL_PATH)/configs/properties/vendor.prop
 
-# Include Vendor Board Config
+# Include Vendor Board Config mula sa ating existing Vendor Tree!
 -include vendor/tecno/KM7k/BoardConfigVendor.mk
