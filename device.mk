@@ -23,8 +23,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Product Overlays (Prebuilt RRO APKs)
 PRODUCT_PACKAGES += \
-    FrameworkResOverlayKM7k \
+    FrameworkResOverlay \
     WifiResOverlay \
     ConnectivityResOverlay \
     MtkSettingsResOverlay \
-    SettingsProviderResOverlayKM7k
+    SettingsProviderResOverlay
+
+# Settings Provider Overlay for Device Name
+PRODUCT_PACKAGES += \
+    SettingsProviderResOverlayKM7k \
+    FrameworkResOverlayKM7k
