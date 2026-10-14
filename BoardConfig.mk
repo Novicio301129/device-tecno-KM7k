@@ -57,7 +57,7 @@ BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/dtb
 
-# Partitions & Sizes (Eksaktong sukat mula sa KM7k Firmware Dump)
+# Partitions & Sizes
 BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -94,5 +94,5 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_SYSTEM_PROP += $(LOCAL_PATH)/configs/properties/system.prop
 TARGET_VENDOR_PROP += $(LOCAL_PATH)/configs/properties/vendor.prop
 
-# Include Vendor Board Config mula sa ating existing Vendor Tree!
+# Include Vendor tree BoardConfig
 -include vendor/tecno/KM7k/BoardConfigVendor.mk
