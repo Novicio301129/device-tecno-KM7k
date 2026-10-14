@@ -29,13 +29,6 @@ PRODUCT_PACKAGES += \
     ConnectivityResOverlay \
     MtkSettingsResOverlay
 
-# Rootdir Configurations
-PRODUCT_PACKAGES += \
-    fstab.mt6789 \
-    init.insmod.mt6789.cfg \
-    ueventd.mt6789.rc \
-    init.mt6789.rc
-
 # Rootdir Prebuilt Modules
 PRODUCT_PACKAGES += \
     fstab.mt6789 \

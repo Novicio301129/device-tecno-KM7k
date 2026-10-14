@@ -1,0 +1,11 @@
+on property:sys.avatarpipe.enabled_native=1
+    start avatarpipe
+
+on property:sys.avatarpipe.enabled_native=0
+    stop avatarpipe
+
+service avatarpipe /system/bin/avatarpipe
+    class core
+    disabled
+    user system
+    group system
