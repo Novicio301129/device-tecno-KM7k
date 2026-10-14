@@ -1,0 +1,38 @@
+//
+// Copyright (C) 2026 The Android Open Source Project
+// Standalone RootDir Android.bp for Tecno KM7k
+//
+
+prebuilt_etc {
+    name: "fstab.mt6789",
+    src: "etc/fstab.mt6789",
+    vendor: true,
+    vendor_ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "init.insmod.mt6789.cfg",
+    src: "etc/init.insmod.mt6789.cfg",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mt6789.rc",
+    src: "etc/init/hw/init.mt6789.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.project.rc",
+    src: "etc/init/hw/init.project.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.mt6789.rc",
+    filename: "ueventd.rc",
+    src: "etc/ueventd.mt6789.rc",
+    vendor: true,
+}
