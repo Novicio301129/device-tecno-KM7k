@@ -21,15 +21,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.mtk_audio_profile=n \
     ro.hardware.audio.primary=mediatek
 
-# Product Overlays (Prebuilt RRO APKs)
-PRODUCT_PACKAGES += \
-    FrameworkResOverlay \
-    WifiResOverlay \
-    ConnectivityResOverlay \
-    MtkSettingsResOverlay \
-    SettingsProviderResOverlay
-
 # Settings Provider Overlay for Device Name
 PRODUCT_PACKAGES += \
     SettingsProviderResOverlayKM7k \
-    FrameworkResOverlayKM7k
+    FrameworkResOverlayKM7k \
+    WifiResOverlay \
+    ConnectivityResOverlay \
+    MtkSettingsResOverlay
