@@ -49,3 +49,14 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy/vendor
 
 # Include Vendor Board Config
 -include vendor/tecno/KM7k/BoardConfigVendor.mk
+
+# Kernel / Boot Image Configuration
+BOARD_BOOT_HEADER_VERSION := 4
+BOARD_PAGE_SIZE := 4096
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+
+TARGET_PREBUILT_KERNEL := device/tecno/KM7k/prebuilt/kernel
+TARGET_PREBUILT_DTB := device/tecno/KM7k/prebuilt/dtb
+
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_PAGE_SIZE)
