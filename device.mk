@@ -36,3 +36,7 @@ PRODUCT_PACKAGES += \
     init.mt6789.rc \
     init.project.rc \
     ueventd.mt6789.rc
+
+# Module Insmod Executable
+PRODUCT_PACKAGES += \
+    init.insmod.sh

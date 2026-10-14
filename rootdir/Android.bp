@@ -36,3 +36,9 @@ prebuilt_etc {
     src: "etc/ueventd.mt6789.rc",
     vendor: true,
 }
+
+sh_binary {
+    name: "init.insmod.sh",
+    src: "bin/init.insmod.sh",
+    vendor: true,
+}
