@@ -64,3 +64,6 @@ TARGET_PREBUILT_DTB := device/tecno/KM7k/prebuilt/dtb
 
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_PAGE_SIZE)
+
+# SELinux (Set to Permissive for initial Bringup)
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
