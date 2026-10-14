@@ -1,0 +1,6 @@
+# Framework & Vendor Binaries
+vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-mediatek
+vendor/bin/hw/android.hardware.audio.service.mediatek
+vendor/bin/hw/android.hardware.lights-service.mediatek
+vendor/bin/hw/android.hardware.camera.provider@2.5-service-mediatek
+vendor/bin/hw/android.hardware.sensors@2.0-service-mediatek

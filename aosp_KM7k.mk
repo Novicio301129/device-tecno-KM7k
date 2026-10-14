@@ -1,6 +1,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_64bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64bit.mk)
-$(call inherit-product, vendor/tecno/KM7k/KM7k-vendor.mk)
+
+# Inherit Device Configuration
+$(call inherit-product, device/tecno/KM7k/device.mk)
 
 PRODUCT_NAME := aosp_KM7k
 PRODUCT_DEVICE := KM7k
