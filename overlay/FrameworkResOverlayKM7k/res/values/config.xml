@@ -70,4 +70,7 @@
     <!-- Display cutout config -->
     <string name="config_mainBuiltInDisplayCutout">M -24,0 L -24,36 L 24,36 L 24,0 Z @dp</string>
     <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
+
+     <!-- Reserve space for system to report correct 256GB capacity -->
+    <integer name="config_reserveSpaceForSystem">10</integer
 </resources>
