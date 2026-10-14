@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tecno.overlay.framework.km7k">
+    package="android.overlay.sparkslim">
+
     <overlay
-        android:targetPackage="android"
         android:isStatic="true"
-        android:priority="1" />
+        android:priority="350"
+        android:targetPackage="android" />
 </manifest>
