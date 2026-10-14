@@ -47,6 +47,10 @@ BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 # SELinux (Android 17 Neverallow Compliant)
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy/vendor
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
+
 # Include Vendor Board Config
 -include vendor/tecno/KM7k/BoardConfigVendor.mk
 
