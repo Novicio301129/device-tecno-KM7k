@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The Android Open Source Project
+     Customized for Tecno KM7k (In-Display Fingerprint & Helio G200 Platform)
+-->
+<resources>
+    <!-- Automatic brightness adjustment support -->
+    <bool name="config_automatic_brightness_available">true</bool>
+
+    <!-- Light sensor levels -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>128</item>
+        <item>256</item>
+        <item>384</item>
+        <item>512</item>
+        <item>640</item>
+        <item>768</item>
+        <item>896</item>
+        <item>1024</item>
+        <item>2048</item>
+        <item>4096</item>
+        <item>6144</item>
+        <item>8192</item>
+        <item>10240</item>
+        <item>12288</item>
+        <item>14336</item>
+        <item>16384</item>
+        <item>18432</item>
+    </integer-array>
+
+    <!-- Auto-brightness backlight values -->
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>8</item>
+        <item>64</item>
+        <item>98</item>
+        <item>104</item>
+        <item>110</item>
+        <item>116</item>
+        <item>122</item>
+        <item>128</item>
+        <item>134</item>
+        <item>182</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+    </integer-array>
+
+    <!-- Screen brightness float settings for Android 17 -->
+    <item type="dimen" name="config_screenBrightnessSettingMinimumFloat">0.003921569</item>
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
+
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">3000</integer>
+    <integer name="config_screenBrightnessDim">10</integer>
+
+    <!-- Display Refresh Rates -->
+    <integer name="config_defaultRefreshRate">0</integer>
+    <integer name="config_defaultPeakRefreshRate">120</integer>
+
+    <!-- IN-DISPLAY FINGERPRINT CONFIGURATION (UDFPS) -->
+    <!-- Set to false since Tecno KM7k uses an in-display fingerprint scanner -->
+    <bool name="config_is_powerbutton_fps">false</bool>
+
+    <!-- Display cutout config -->
+    <string name="config_mainBuiltInDisplayCutout">M -24,0 L -24,36 L 24,36 L 24,0 Z @dp</string>
+    <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
+</resources>
