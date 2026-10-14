@@ -1,6 +1,4 @@
 runtime_resource_overlay {
-    name: "FrameworkResOverlayKM7k",
-    theme: "FrameworkResOverlayKM7k",
-    sdk_version: "current",
-    product_specific: true,
+    name: "FrameworksResOverlayKM7k",
+    vendor: true
 }
