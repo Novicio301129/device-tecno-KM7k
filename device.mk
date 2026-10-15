@@ -108,6 +108,10 @@ PRODUCT_PACKAGES += \
     libhidltransport:64 \
     libhwbinder:64
 
+# Lineage-Specific Overlays
+PRODUCT_PACKAGES += \
+    ApertureOverlay
+
 # Rootdir Prebuilt Configurations (Extracted from KM7k Stock)
 PRODUCT_PACKAGES += \
     fstab.mt6789 \
